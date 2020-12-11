@@ -6,6 +6,7 @@ React 17.0.1 basic TypeScript setup.
 # bootstrapping
 npx create-react-app react-base --template typescript
 cd react-base
+yarn add react-router-dom @types/react-router-dom
 
 yarn start # dev server
 yarn test # test runner
