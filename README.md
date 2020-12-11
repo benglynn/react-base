@@ -7,6 +7,7 @@ React 17.0.1 basic TypeScript setup.
 npx create-react-app react-base --template typescript
 cd react-base
 yarn add react-router-dom @types/react-router-dom
+yarn add react-redux @reduxjs/toolkit @types/react-redux
 
 yarn start # dev server
 yarn test # test runner
