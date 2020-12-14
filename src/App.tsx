@@ -3,7 +3,11 @@ import Swatches from "./colours/Swatches";
 import { useSelector } from "react-redux";
 import { selectColours } from "./colours/coloursSlice";
 import { useDispatch } from "react-redux";
-import { addToSelection, removeFromSelection } from "./colours/coloursSlice";
+import {
+  addToSelection,
+  removeFromSelection,
+  purgeSelection,
+} from "./colours/coloursSlice";
 import Colour from "./colours/Colour";
 
 const App: FC = () => {
@@ -12,6 +16,7 @@ const App: FC = () => {
   const onAvailableClick = (colour: Colour) => dispatch(addToSelection(colour));
   const onSelectedClick = (colour: Colour) =>
     dispatch(removeFromSelection(colour));
+  const onClearSelectionClick = () => dispatch(purgeSelection());
   return (
     <>
       <h1>Available colours</h1>
@@ -20,7 +25,9 @@ const App: FC = () => {
         actionLabel="Add"
         action={onAvailableClick}
       />
-      <h1>Selection</h1>
+      <h1>
+        Selection <button onClick={onClearSelectionClick}>clear</button>
+      </h1>
       <Swatches
         colours={selected}
         actionLabel="Remove"
