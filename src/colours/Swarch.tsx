@@ -1,10 +1,6 @@
 import { FC } from "react";
 import CSS from "csstype";
-
-interface Data {
-  name: string;
-  hex: string;
-}
+import Colour from "./Colour";
 
 const colourStyle: CSS.Properties = {
   alignItems: "center",
@@ -18,7 +14,7 @@ const colourStyle: CSS.Properties = {
   padding: ".5em",
 };
 
-const squareStyle = (colour: Data): CSS.Properties => ({
+const squareStyle = (colour: Colour): CSS.Properties => ({
   backgroundColor: `#${colour.hex}`,
   border: "1px solid #ccc",
   borderRadius: "2px",
@@ -27,15 +23,17 @@ const squareStyle = (colour: Data): CSS.Properties => ({
 });
 
 interface Props {
-  colour: Data;
+  colour: Colour;
+  actionLabel: string;
+  action: (colour: Colour) => void;
 }
 
-const Colour: FC<Props> = ({ colour }) => (
+const Swatch: FC<Props> = ({ colour, actionLabel, action }) => (
   <div style={colourStyle}>
     <div style={squareStyle(colour)}></div>
     <h2>{colour.name}</h2>
-    <button>Add</button>
+    <button onClick={() => action(colour)}>{actionLabel}</button>
   </div>
 );
 
-export default Colour;
+export default Swatch;
